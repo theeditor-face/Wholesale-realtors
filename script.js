@@ -9,7 +9,7 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
 
 // ─── ONESIGNAL CONFIG ───
 const ONESIGNAL_APP_ID  = '9828e96c-6283-4948-82e7-ceef3e196f6a';
-const ONESIGNAL_REST_KEY = 'PASTE_YOUR_ONESIGNAL_REST_API_KEY_HERE';
+const ONESIGNAL_REST_KEY = 'os_v2_app_tauos3dcqneuraxhz3xt4glpnjk3d7qo7e4em2f3ci2vppp4zy7hedlmev7qdbtuux5bm47mmrjq6jkbnyw2hmtowmvu42nlglsvw2q';
 // To get REST key: OneSignal dashboard → Settings → Keys & IDs → REST API Key
 
 // ═══════════════════════════════════════════════════
