@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Wholesale Realtors — Your Edge in U.S. Real Estate</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-logo" id="logoTrigger">
+    <div class="logo-icon">🏠</div>
+    <span>Wholesale <em>Realtors</em></span>
+  </div>
+  <div class="nav-links">
+    <a href="index.html" class="active">Home</a>
+    <a href="properties.html">Properties</a>
+    <a href="hot-deals.html">Hot Deals</a>
+    <a href="join.html">Join List</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="properties.html">Properties</a>
+  <a href="hot-deals.html">Hot Deals</a>
+  <a href="join.html">Join List</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-badge">🏆 Exclusive Off-Market Deals</div>
+      <h1>Your Edge in U.S.<br/>Real Estate <em>Starts Here</em></h1>
+      <p class="hero-sub">Join our exclusive buyers list and receive deeply discounted off-market properties before they ever hit the open market.</p>
+      <div class="hero-btns">
+        <a href="join.html" class="btn-primary">Join Buyers List</a>
+        <a href="properties.html" class="btn-secondary">View Deals</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num" data-target="150">0</span><span class="stat-plus">+</span><span class="stat-label">Deals Closed</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num" data-target="12">0</span><span class="stat-plus">+</span><span class="stat-label">States Active</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num" data-target="40">0</span><span class="stat-plus">%</span><span class="stat-label">Below Market Avg</span></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card" id="heroCard" onclick="window.location.href='properties.html'">
+        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80" alt="Featured"/>
+        <div class="hero-card-badge">🔥 Hot Deal</div>
+        <div class="hero-card-info">
+          <span class="hero-card-price">$149,000</span>
+          <span class="hero-card-loc">📍 Houston, TX</span>
+        </div>
+        <div class="hero-card-details"><span>3 Beds</span><span>2 Baths</span><span>ARV: $220k</span></div>
+      </div>
+      <p class="hero-card-hint">👆 Tap to view deal</p>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="scroll-dot"></div></div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section how-it-works" id="how-it-works">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Simple Process</span>
+      <h2>How It <em>Works</em></h2>
+      <p>Four steps between you and your next investment property</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card"><div class="step-num">01</div><div class="step-icon">📋</div><h3>Join the Buyers List</h3><p>Sign up with your criteria — states, budget, property type. Free and takes 60 seconds.</p></div>
+      <div class="step-card"><div class="step-num">02</div><div class="step-icon">🎯</div><h3>Tell Us Your Criteria</h3><p>We match you with deals that fit exactly what you're looking for. No spam, only relevant deals.</p></div>
+      <div class="step-card"><div class="step-num">03</div><div class="step-icon">📬</div><h3>Receive Discounted Deals</h3><p>Get first access to off-market properties below market value before anyone else sees them.</p></div>
+      <div class="step-card"><div class="step-num">04</div><div class="step-icon">🤝</div><h3>Close Fast</h3><p>We handle the paperwork. You close quickly and start building equity from day one.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED DEALS PREVIEW -->
+<section class="section properties-section" style="background:var(--bg-section);">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Latest Inventory</span>
+      <h2>Recent <em>Deals</em></h2>
+      <p>A preview of our latest off-market opportunities</p>
+    </div>
+    <div class="properties-grid" id="featuredGrid">
+      <div class="loading-state"><div class="spinner"></div><p>Loading deals...</p></div>
+    </div>
+    <div style="text-align:center;margin-top:36px;">
+      <a href="properties.html" class="btn-primary">View All Properties →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo" style="cursor:default;"><div class="logo-icon">🏠</div><span>Wholesale <em>Realtors</em></span></div>
+        <p>Your edge in U.S. real estate. Exclusive off-market deals delivered to serious investors.</p>
+      </div>
+      <div class="footer-links">
+        <h5>Quick Links</h5>
+        <a href="properties.html">Properties</a>
+        <a href="hot-deals.html">Hot Deals</a>
+        <a href="join.html">Join Buyers List</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-contact">
+        <h5>Contact</h5>
+        <p>jakecarter.homebuyers@gmail.com</p>
+        <p>United States</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Wholesale Realtors. All rights reserved.</p>
+      <p>We are real estate investors and wholesalers, not a licensed brokerage.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="mailto:jakecarter.homebuyers@gmail.com" class="floating-email-btn" title="Email Us">✉️</a>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/69e5343e3ca1cc1c339ffa10/1jmjl85t3';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Join Buyers List — Wholesale Realtors</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<nav id="navbar">
+  <div class="nav-logo" id="logoTrigger"><div class="logo-icon">🏠</div><span>Wholesale <em>Realtors</em></span></div>
+  <div class="nav-links"><a href="index.html">Home</a><a href="properties.html">Properties</a><a href="hot-deals.html">Hot Deals</a><a href="join.html" class="active">Join List</a><a href="contact.html">Contact</a></div>
+  <div class="nav-right"><button class="theme-toggle" id="themeToggle">🌙 Dark</button><div class="hamburger" id="hamburger"><span></span><span></span><span></span></div></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a><a href="properties.html">Properties</a><a href="hot-deals.html">Hot Deals</a><a href="join.html">Join List</a><a href="contact.html">Contact</a>
+</div>
+<div class="page-hero"><div class="container"><div class="hero-badge" style="margin-bottom:16px;">📋 Get First Access</div><h1>Join Our <em>Buyers List</em></h1><p>Tell us what you're looking for and we'll send matching deals straight to you</p></div></div>
+<section class="section join-section">
+  <div class="container">
+    <div class="join-wrapper">
+      <div class="join-left">
+        <span class="section-tag">Why Join?</span>
+        <h2>Get Deals Before <em>Anyone Else</em></h2>
+        <p>Our buyers list members get exclusive access to deeply discounted off-market properties before they're ever listed publicly.</p>
+        <div class="join-perks">
+          <div class="perk">✅ Off-market deals only</div>
+          <div class="perk">✅ Prices 20–40% below market value</div>
+          <div class="perk">✅ First access before public listing</div>
+          <div class="perk">✅ Deals matched to your criteria</div>
+          <div class="perk">✅ Zero spam — only relevant properties</div>
+          <div class="perk">✅ Free to join, cancel anytime</div>
+        </div>
+      </div>
+      <div class="join-right">
+        <form class="buyer-form" id="buyerForm">
+          <div class="form-row">
+            <div class="form-group"><label>Full Name</label><input type="text" id="fname" placeholder="John Smith" required/></div>
+            <div class="form-group"><label>Email Address</label><input type="email" id="femail" placeholder="john@email.com" required/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Phone / WhatsApp</label><input type="tel" id="fphone" placeholder="+1 (555) 000-0000"/></div>
+            <div class="form-group"><label>Budget Range</label>
+              <select id="fbudget" required>
+                <option value="">Select budget...</option>
+                <option>Under $50,000</option>
+                <option>$50,000 – $100,000</option>
+                <option>$100,000 – $200,000</option>
+                <option>$200,000 – $500,000</option>
+                <option>$500,000+</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group full"><label>States Interested In</label><input type="text" id="fstates" placeholder="e.g. Texas, Florida, Georgia" required/></div>
+          <div class="form-group full">
+            <label>Property Type</label>
+            <div class="prop-types">
+              <label class="type-check"><input type="checkbox" value="Single Family"/> Single Family</label>
+              <label class="type-check"><input type="checkbox" value="Multi-Family"/> Multi-Family</label>
+              <label class="type-check"><input type="checkbox" value="Land"/> Land</label>
+              <label class="type-check"><input type="checkbox" value="Commercial"/> Commercial</label>
+              <label class="type-check"><input type="checkbox" value="Fix & Flip"/> Fix &amp; Flip</label>
+            </div>
+          </div>
+          <button type="submit" class="btn-primary full-btn" id="submitBtn">Join Buyers List →</button>
+          <p class="form-note">🔒 We respect your privacy. No spam, ever.</p>
+        </form>
+        <div class="form-success" id="formSuccess" style="display:none;">
+          <div class="success-icon">🎉</div>
+          <h3>You're on the list!</h3>
+          <p>Welcome to Wholesale Realtors. We'll reach out when we have deals matching your criteria.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer><div class="container"><div class="footer-top"><div class="footer-brand"><div class="nav-logo" style="cursor:default;"><div class="logo-icon">🏠</div><span>Wholesale <em>Realtors</em></span></div><p>Your edge in U.S. real estate.</p></div><div class="footer-links"><h5>Quick Links</h5><a href="properties.html">Properties</a><a href="join.html">Join Buyers List</a><a href="contact.html">Contact</a></div><div class="footer-contact"><h5>Contact</h5><p>jakecarter.homebuyers@gmail.com</p></div></div><div class="footer-bottom"><p>© 2025 Wholesale Realtors.</p><p>We are real estate investors, not a licensed brokerage.</p></div></div></footer>
+<a href="mailto:jakecarter.homebuyers@gmail.com" class="floating-email-btn">✉️</a>
+<!--Start of Tawk.to Script--><script type="text/javascript">var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();(function(){var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];s1.async=true;s1.src='https://embed.tawk.to/69e5343e3ca1cc1c339ffa10/1jmjl85t3';s1.charset='UTF-8';s1.setAttribute('crossorigin','*');s0.parentNode.insertBefore(s1,s0);})();</script>
+<script src="script.js"></script>
+</body>
+</html>

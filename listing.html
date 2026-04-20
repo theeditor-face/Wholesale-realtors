@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Property Details — Wholesale Realtors</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-logo" id="logoTrigger"><div class="logo-icon">🏠</div><span>Wholesale <em>Realtors</em></span></div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="properties.html" class="active">Properties</a>
+    <a href="hot-deals.html">Hot Deals</a>
+    <a href="join.html">Join List</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a><a href="properties.html">Properties</a>
+  <a href="hot-deals.html">Hot Deals</a><a href="join.html">Join List</a><a href="contact.html">Contact</a>
+</div>
+
+<!-- Loading state -->
+<div id="listingLoading" style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding-top:80px;">
+  <div style="text-align:center;"><div class="spinner" style="margin:0 auto 16px;"></div><p style="color:var(--text-muted);">Loading property details...</p></div>
+</div>
+
+<!-- Main listing content -->
+<div id="listingContent" style="display:none;" class="listing-page">
+
+  <!-- Photo Section -->
+  <div class="listing-photos" id="listingPhotos">
+    <img class="listing-main-photo" id="mainPhoto" src="" alt="" onclick="openGallery(0)"/>
+    <div class="listing-badges" id="listingBadges"></div>
+    <div class="listing-photo-count" id="photoCount" onclick="openGallery(0)">📷 <span id="photoCountNum">1</span> Photos</div>
+  </div>
+
+  <!-- Body -->
+  <div class="listing-body">
+    <div class="listing-main">
+
+      <!-- Breadcrumb -->
+      <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:20px;">
+        <a href="properties.html" style="color:var(--gold);">Properties</a> &rsaquo; <span id="breadcrumbTitle"></span>
+      </p>
+
+      <!-- Price & Address -->
+      <div class="listing-price-section">
+        <div class="listing-price" id="listingPrice"></div>
+        <div class="listing-est-mortgage" id="listingMortgage"></div>
+        <div class="listing-address" id="listingAddress"></div>
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="listing-quick-stats" id="quickStats"></div>
+
+      <!-- ARV Highlight -->
+      <div class="arv-highlight" id="arvHighlight" style="display:none;">
+        <div><div class="arv-label">After Repair Value (ARV)</div><div class="arv-profit" id="arvProfit"></div></div>
+        <div class="arv-val" id="arvVal"></div>
+      </div>
+
+      <!-- Description -->
+      <div class="detail-section" id="descSection" style="display:none;">
+        <div class="detail-section-title">About This Property</div>
+        <p class="listing-description" id="listingDesc"></p>
+      </div>
+
+      <!-- Interior Details -->
+      <div class="detail-section" id="interiorSection">
+        <div class="detail-section-title">Interior Details</div>
+        <div class="detail-grid" id="interiorGrid"></div>
+      </div>
+
+      <!-- Exterior Details -->
+      <div class="detail-section" id="exteriorSection">
+        <div class="detail-section-title">Exterior Details</div>
+        <div class="detail-grid" id="exteriorGrid"></div>
+      </div>
+
+      <!-- Property Info -->
+      <div class="detail-section" id="propInfoSection">
+        <div class="detail-section-title">Property Information</div>
+        <div class="detail-grid" id="propInfoGrid"></div>
+      </div>
+
+      <!-- Location -->
+      <div class="detail-section" id="locationSection">
+        <div class="detail-section-title">Location & Schools</div>
+        <div class="detail-grid" id="locationGrid"></div>
+        <div class="listing-map" id="listingMap" style="margin-top:20px;"></div>
+      </div>
+
+      <!-- Video -->
+      <div class="detail-section" id="videoSection" style="display:none;">
+        <div class="detail-section-title">🎥 Video Tour</div>
+        <div class="listing-video" id="listingVideo"></div>
+      </div>
+
+      <!-- Price History -->
+      <div class="detail-section" id="priceHistSection" style="display:none;">
+        <div class="detail-section-title">Price History</div>
+        <div class="price-history" id="priceHistory"></div>
+      </div>
+
+      <!-- Mortgage Calculator -->
+      <div class="detail-section">
+        <div class="detail-section-title">💰 Affordability Calculator</div>
+        <div class="mortgage-calc">
+          <h3>Calculate Monthly Payment</h3>
+          <p class="calc-subtitle">Estimated payment: <strong id="calcEstLabel">$0/month</strong></p>
+
+          <!-- Donut Chart -->
+          <div class="donut-wrap">
+            <div class="donut-container">
+              <svg width="200" height="200" viewBox="0 0 200 200">
+                <circle id="d-bg"   cx="100" cy="100" r="80" fill="none" stroke="#E5E7EB" stroke-width="24"/>
+                <circle id="d-ins"  cx="100" cy="100" r="80" fill="none" stroke="#A78BFA" stroke-width="24" stroke-dasharray="0 502.65"/>
+                <circle id="d-tax"  cx="100" cy="100" r="80" fill="none" stroke="#2DD4BF" stroke-width="24" stroke-dasharray="0 502.65"/>
+                <circle id="d-pi"   cx="100" cy="100" r="80" fill="none" stroke="#1E3A5F" stroke-width="24" stroke-dasharray="0 502.65"/>
+              </svg>
+              <div class="donut-center">
+                <div class="donut-total" id="donutTotal">$0</div>
+                <div class="donut-label">/month</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Legend -->
+          <div class="donut-legend">
+            <div class="legend-item"><div class="legend-left"><div class="legend-dot" style="background:#1E3A5F;"></div><span class="legend-name">Principal &amp; Interest</span></div><span class="legend-amount" id="leg-pi">$0</span></div>
+            <div class="legend-item"><div class="legend-left"><div class="legend-dot" style="background:#2DD4BF;"></div><span class="legend-name">Property Taxes</span></div><span class="legend-amount" id="leg-tax">$0</span></div>
+            <div class="legend-item"><div class="legend-left"><div class="legend-dot" style="background:#FBBF24;"></div><span class="legend-name">Home Insurance</span></div><span class="legend-amount" id="leg-ins">$75</span></div>
+          </div>
+
+          <!-- Sliders -->
+          <div class="calc-field">
+            <label>Home Price <span id="calcPriceLabel">$0</span></label>
+            <input type="range" class="calc-slider" id="calcPrice" min="10000" max="2000000" step="5000" oninput="updateCalc()"/>
+          </div>
+          <div class="calc-field">
+            <label>Down Payment <span id="calcDownLabel">20% ($0)</span></label>
+            <input type="range" class="calc-slider" id="calcDown" min="3" max="50" step="1" value="20" oninput="updateCalc()"/>
+          </div>
+          <div class="calc-field">
+            <label>Interest Rate <span id="calcRateLabel">7.0%</span></label>
+            <input type="range" class="calc-slider" id="calcRate" min="3" max="15" step="0.1" value="7" oninput="updateCalc()"/>
+          </div>
+          <div class="calc-field">
+            <label>Loan Type</label>
+            <select class="calc-select" id="calcTerm" onchange="updateCalc()">
+              <option value="360">30-year fixed</option>
+              <option value="240">20-year fixed</option>
+              <option value="180">15-year fixed</option>
+              <option value="120">10-year fixed</option>
+            </select>
+          </div>
+          <a href="join.html" class="btn-primary full-btn" style="margin-top:8px;">Get Pre-Qualified →</a>
+        </div>
+      </div>
+
+      <!-- Similar Homes -->
+      <div class="similar-section">
+        <h2>Similar <em style="font-style:italic;color:var(--gold);">Homes</em></h2>
+        <div class="similar-grid" id="similarGrid">
+          <div class="loading-state" style="grid-column:1/-1;"><div class="spinner"></div><p>Loading similar properties...</p></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Sidebar -->
+    <div class="listing-sidebar">
+      <!-- Contact Agent -->
+      <div class="contact-agent-card">
+        <h3>Contact Agent</h3>
+        <p>Interested in this property? Reach out and we'll get back to you fast.</p>
+        <div class="contact-form" id="listingContactForm">
+          <input type="text" id="cf-name" placeholder="Your Name"/>
+          <input type="tel" id="cf-phone" placeholder="Phone / WhatsApp"/>
+          <input type="email" id="cf-email" placeholder="Email Address"/>
+          <textarea id="cf-message" rows="3" placeholder="Loading..."></textarea>
+          <button class="btn-primary full-btn" onclick="submitContactForm()">📩 Request Info</button>
+        </div>
+        <div id="cfSuccess" style="display:none;text-align:center;padding:20px;">
+          <div style="font-size:2rem;margin-bottom:8px;">✅</div>
+          <p style="color:var(--text);font-weight:600;">Request sent!</p>
+          <p style="color:var(--text-muted);font-size:0.82rem;margin-top:4px;">We'll get back to you within 1 hour.</p>
+        </div>
+        <div class="contact-btns">
+          <a class="btn-tawk" onclick="openTawk()">💬 Chat with Us Live</a>
+          <a href="mailto:jakecarter.homebuyers@gmail.com" class="btn-outline-gold" id="emailLink">📧 Send Email</a>
+        </div>
+        <p class="contact-disclaimer">By submitting, you agree to be contacted about this property. Message/data rates may apply.</p>
+      </div>
+
+      <!-- Listing Agent -->
+      <div class="contact-agent-card" style="background:var(--bg-section);">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+          <div style="width:44px;height:44px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">🏠</div>
+          <div>
+            <div style="font-weight:600;color:var(--text);font-size:0.9rem;">Jake Carter</div>
+            <div style="font-size:0.76rem;color:var(--text-muted);">Investment Property Specialist</div>
+          </div>
+        </div>
+        <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.6;">Wholesale Realtors specializes in off-market investment properties across the United States.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Gallery Modal -->
+<div class="gallery-overlay" id="galleryModal" style="display:none;">
+  <button class="gallery-close" onclick="closeGallery()">✕</button>
+  <button class="gallery-nav gallery-prev" onclick="galleryNav(-1)">‹</button>
+  <img class="gallery-main-img" id="galleryMainImg" src="" alt=""/>
+  <div class="gallery-thumbs" id="galleryThumbs"></div>
+  <button class="gallery-nav gallery-next" onclick="galleryNav(1)">›</button>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand"><div class="nav-logo" style="cursor:default;"><div class="logo-icon">🏠</div><span>Wholesale <em>Realtors</em></span></div><p>Your edge in U.S. real estate.</p></div>
+      <div class="footer-links"><h5>Quick Links</h5><a href="properties.html">Properties</a><a href="hot-deals.html">Hot Deals</a><a href="join.html">Join Buyers List</a><a href="contact.html">Contact</a></div>
+      <div class="footer-contact"><h5>Contact</h5><p>jakecarter.homebuyers@gmail.com</p></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 Wholesale Realtors. All rights reserved.</p><p>We are real estate investors, not a licensed brokerage.</p></div>
+  </div>
+</footer>
+
+<a href="mailto:jakecarter.homebuyers@gmail.com" class="floating-email-btn">✉️</a>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];s1.async=true;s1.src='https://embed.tawk.to/69e5343e3ca1cc1c339ffa10/1jmjl85t3';s1.charset='UTF-8';s1.setAttribute('crossorigin','*');s0.parentNode.insertBefore(s1,s0);})();
+</script>
+<script src="script.js"></script>
+</body>
+</html>

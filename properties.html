@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Properties — Wholesale Realtors</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-logo" id="logoTrigger"><div class="logo-icon">🏠</div><span>Wholesale <em>Realtors</em></span></div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="properties.html" class="active">Properties</a>
+    <a href="hot-deals.html">Hot Deals</a>
+    <a href="join.html">Join List</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a><a href="properties.html">Properties</a>
+  <a href="hot-deals.html">Hot Deals</a><a href="join.html">Join List</a><a href="contact.html">Contact</a>
+</div>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="hero-badge" style="margin-bottom:16px;">🏠 Current Inventory</div>
+    <h1>Available <em>Deals</em></h1>
+    <p>Deeply discounted off-market properties ready for serious investors</p>
+  </div>
+</div>
+
+<section class="section properties-section">
+  <div class="container">
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <select id="filterStatus" onchange="filterProperties()">
+        <option value="">All Status</option>
+        <option value="Available">Available</option>
+        <option value="Under Contract">Under Contract</option>
+        <option value="Sold">Sold</option>
+      </select>
+      <select id="filterType" onchange="filterProperties()">
+        <option value="">All Types</option>
+        <option value="Wholesale">Wholesale</option>
+        <option value="Fix & Flip">Fix & Flip</option>
+        <option value="Buy & Hold">Buy & Hold</option>
+        <option value="Land">Land</option>
+      </select>
+      <input type="text" id="filterSearch" placeholder="Search by city or state..." oninput="filterProperties()" style="min-width:200px;"/>
+      <span class="filter-count" id="filterCount"></span>
+    </div>
+    <div class="properties-grid" id="propertiesGrid">
+      <div class="loading-state"><div class="spinner"></div><p>Loading available deals...</p></div>
+    </div>
+    <div class="no-properties" id="noProperties" style="display:none;">
+      <div class="no-prop-icon">🏠</div>
+      <h3>New Deals Coming Soon</h3>
+      <p>Join our buyers list to be the first notified when properties drop.</p>
+      <a href="join.html" class="btn-primary" style="margin-top:20px;display:inline-flex;">Join Buyers List</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo" style="cursor:default;"><div class="logo-icon">🏠</div><span>Wholesale <em>Realtors</em></span></div>
+        <p>Your edge in U.S. real estate. Exclusive off-market deals delivered to serious investors.</p>
+      </div>
+      <div class="footer-links"><h5>Quick Links</h5><a href="properties.html">Properties</a><a href="hot-deals.html">Hot Deals</a><a href="join.html">Join Buyers List</a><a href="contact.html">Contact</a></div>
+      <div class="footer-contact"><h5>Contact</h5><p>jakecarter.homebuyers@gmail.com</p><p>United States</p></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 Wholesale Realtors. All rights reserved.</p><p>We are real estate investors, not a licensed brokerage.</p></div>
+  </div>
+</footer>
+
+<a href="mailto:jakecarter.homebuyers@gmail.com" class="floating-email-btn">✉️</a>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];s1.async=true;s1.src='https://embed.tawk.to/69e5343e3ca1cc1c339ffa10/1jmjl85t3';s1.charset='UTF-8';s1.setAttribute('crossorigin','*');s0.parentNode.insertBefore(s1,s0);})();
+</script>
+<script src="script.js"></script>
+</body>
+</html>

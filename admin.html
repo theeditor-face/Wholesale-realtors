@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Admin — Wholesale Realtors</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- Login Screen -->
+<div class="admin-login-page" id="adminLoginPage">
+  <div class="admin-login-card">
+    <div class="admin-login-icon">🔐</div>
+    <h2>Admin Access</h2>
+    <p>Enter your password to manage listings</p>
+    <input type="password" id="adminPasswordInput" class="admin-pass-input" placeholder="Password" onkeydown="if(event.key==='Enter')checkPass()"/>
+    <p class="admin-error" id="adminError" style="display:none;">Incorrect password. Try again.</p>
+    <button class="btn-primary full-btn" onclick="checkPass()">Enter →</button>
+    <p style="margin-top:16px;font-size:0.76rem;color:var(--text-light);"><a href="index.html" style="color:var(--gold);">← Back to site</a></p>
+  </div>
+</div>
+
+<!-- Admin Panel -->
+<div id="adminPanelPage" style="display:none;">
+<nav id="navbar" style="position:relative;">
+  <div class="nav-logo"><div class="logo-icon">🏠</div><span>Wholesale <em>Realtors</em> — Admin</span></div>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+    <a href="index.html" class="btn-secondary" style="font-size:0.8rem;padding:8px 18px;">← Back to Site</a>
+  </div>
+</nav>
+
+<div class="admin-page">
+  <div class="admin-container">
+    <div class="admin-title">🏠 Admin Panel</div>
+    <div class="admin-tabs">
+      <button class="admin-tab active" onclick="switchTab(this,'tab-add')">➕ Add Property</button>
+      <button class="admin-tab" onclick="switchTab(this,'tab-manage');loadManageListings()">📋 Manage</button>
+      <button class="admin-tab" onclick="switchTab(this,'tab-hero');loadHeroSelector()">⭐ Hero Card</button>
+      <button class="admin-tab" onclick="switchTab(this,'tab-leads');loadLeads()">👥 Leads</button>
+    </div>
+
+    <!-- ADD PROPERTY TAB -->
+    <div class="admin-tab-content active" id="tab-add">
+      <form id="adminPropertyForm">
+        <div class="admin-form-grid">
+
+          <div class="admin-section-label" style="border-top:none;margin-top:0;">📋 Basic Info</div>
+          <div class="form-group full"><label>Property Title *</label><input type="text" id="a-title" placeholder="e.g. Charming 3BR Ranch in Dallas, TX" required/></div>
+          <div class="form-group"><label>Asking Price *</label><input type="text" id="a-price" placeholder="e.g. $149,000" required/></div>
+          <div class="form-group"><label>ARV (After Repair Value)</label><input type="text" id="a-arv" placeholder="e.g. $220,000"/></div>
+          <div class="form-group full"><label>Full Address *</label><input type="text" id="a-location" placeholder="e.g. 123 Oak Street, Dallas, TX 75201" required/></div>
+          <div class="form-group"><label>Deal Type</label><select id="a-deal"><option value="Wholesale">Wholesale</option><option value="Fix & Flip">Fix &amp; Flip</option><option value="Buy & Hold">Buy &amp; Hold</option><option value="Land">Land</option></select></div>
+          <div class="form-group"><label>Listing Status</label><select id="a-status"><option value="Available">Available</option><option value="Under Contract">Under Contract</option><option value="Sold">Sold</option></select></div>
+
+          <div class="admin-section-label">🏠 Interior Details</div>
+          <div class="form-group"><label>Bedrooms</label><input type="number" id="a-beds" placeholder="3" min="0"/></div>
+          <div class="form-group"><label>Bathrooms</label><input type="number" id="a-baths" placeholder="2" min="0" step="0.5"/></div>
+          <div class="form-group"><label>Square Footage</label><input type="text" id="a-sqft" placeholder="e.g. 1,450 sqft"/></div>
+          <div class="form-group"><label>Number of Rooms</label><input type="text" id="a-num-rooms" placeholder="e.g. 8"/></div>
+          <div class="form-group"><label>Bedroom Details</label><input type="text" id="a-bed-details" placeholder="e.g. Main level bedrooms with built-ins"/></div>
+          <div class="form-group"><label>Bathroom Details</label><input type="text" id="a-bath-details" placeholder="e.g. 2 full, 1 half"/></div>
+          <div class="form-group"><label>Stories / Levels</label><input type="text" id="a-stories" placeholder="e.g. 2 story, Two"/></div>
+          <div class="form-group"><label>Basement</label><input type="text" id="a-basement" placeholder="e.g. Crawl Space, Full, None"/></div>
+          <div class="form-group"><label>Flooring</label><input type="text" id="a-flooring" placeholder="e.g. Hardwood, Tile, Carpet"/></div>
+          <div class="form-group"><label>Windows</label><input type="text" id="a-windows" placeholder="e.g. Double Pane"/></div>
+          <div class="form-group"><label>Fireplace</label><input type="text" id="a-fireplace" placeholder="e.g. Gas, Wood Burning, None"/></div>
+          <div class="form-group"><label>Heating &amp; Cooling</label><input type="text" id="a-heating" placeholder="e.g. Central Air, Forced Air"/></div>
+          <div class="form-group"><label>Security System</label><input type="text" id="a-security" placeholder="e.g. Alarm, Smoke Detectors"/></div>
+          <div class="form-group full"><label>Appliances Included</label><input type="text" id="a-appliances" placeholder="e.g. Refrigerator, Dishwasher, Washer/Dryer"/></div>
+
+          <div class="admin-section-label">🏗️ Exterior Details</div>
+          <div class="form-group"><label>Roof Type</label><input type="text" id="a-roof" placeholder="e.g. Composite Shingle"/></div>
+          <div class="form-group"><label>Patio / Porch / Deck</label><input type="text" id="a-patio" placeholder="e.g. Two-tier brick patio"/></div>
+          <div class="form-group"><label>Fencing</label><input type="text" id="a-fencing" placeholder="e.g. Back Yard, Privacy Fence"/></div>
+          <div class="form-group"><label>Foundation</label><input type="text" id="a-foundation" placeholder="e.g. Slab, Crawl Space"/></div>
+          <div class="form-group"><label>Parking / Garage</label><input type="text" id="a-parking" placeholder="e.g. Attached 2-Car Garage"/></div>
+          <div class="form-group"><label>Pool</label><input type="text" id="a-pool" placeholder="e.g. Yes — In-Ground, None"/></div>
+
+          <div class="admin-section-label">📋 Property Info</div>
+          <div class="form-group"><label>Year Built</label><input type="text" id="a-year-built" placeholder="e.g. 1989"/></div>
+          <div class="form-group"><label>Property Type / Style</label><input type="text" id="a-prop-type" placeholder="e.g. Single Family, Ranch"/></div>
+          <div class="form-group"><label>Construction Materials</label><input type="text" id="a-construction" placeholder="e.g. Brick, Stone, Frame"/></div>
+          <div class="form-group"><label>Lot Size</label><input type="text" id="a-lot-size" placeholder="e.g. 0.51 acres"/></div>
+          <div class="form-group"><label>HOA</label><input type="text" id="a-hoa" placeholder="e.g. None, $150/month"/></div>
+          <div class="form-group"><label>Price Per Sqft</label><input type="text" id="a-price-sqft" placeholder="e.g. $95"/></div>
+
+          <div class="admin-section-label">📍 Location</div>
+          <div class="form-group"><label>Community / Neighborhood</label><input type="text" id="a-community" placeholder="e.g. Margaret Mitchell"/></div>
+          <div class="form-group"><label>Elementary School</label><input type="text" id="a-school-elem" placeholder="e.g. Morris Brandon"/></div>
+          <div class="form-group"><label>Middle School</label><input type="text" id="a-school-mid" placeholder="e.g. Sutton Middle"/></div>
+          <div class="form-group"><label>High School</label><input type="text" id="a-school-high" placeholder="e.g. North Atlanta High"/></div>
+
+          <div class="admin-section-label">💰 Financial</div>
+          <div class="form-group full"><label>Price History Note</label><input type="text" id="a-price-history" placeholder="e.g. Listed 04/19/2025 at $149,000"/></div>
+
+          <div class="admin-section-label">📝 Description &amp; Media</div>
+          <div class="form-group full"><label>Property Description</label><textarea id="a-description" rows="6" placeholder="Describe the property in detail — condition, investment opportunity, neighborhood, repairs needed, highlights..."></textarea></div>
+
+          <!-- Hot Deal & Hero -->
+          <div class="form-group full">
+            <div class="toggle-row">
+              <label class="toggle-label" style="font-size:0.9rem;"><input type="checkbox" id="a-hotdeal"/> 🔥 Mark as Hot Deal — shows in Hot Deals section with badge</label>
+              <label class="toggle-label" style="font-size:0.9rem;"><input type="checkbox" id="a-hero"/> ⭐ Show on Hero Card — replaces homepage featured property</label>
+            </div>
+          </div>
+
+          <!-- Images -->
+          <div class="form-group full">
+            <label>Property Images * (select multiple)</label>
+            <div class="upload-area">
+              <div class="upload-icon">📷</div>
+              <p>Click to upload images or drag &amp; drop</p>
+              <span>JPG, PNG, WEBP — up to 10MB each</span>
+              <input type="file" id="a-images" multiple accept="image/*" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;"/>
+            </div>
+            <div class="image-previews" id="imagePreviews"></div>
+          </div>
+
+          <!-- Video -->
+          <div class="form-group full">
+            <label>Video Tour — Upload directly from phone</label>
+            <div class="upload-area">
+              <div class="upload-icon">🎥</div>
+              <p>Upload video file</p>
+              <span>MP4, MOV, WEBM — up to 100MB</span>
+              <input type="file" id="a-video-file" accept="video/*" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;"/>
+            </div>
+            <div class="video-previews" id="videoPreviews"></div>
+            <label style="margin-top:10px;display:block;font-size:0.75rem;font-weight:600;color:var(--text-muted);letter-spacing:0.5px;text-transform:uppercase;">Or paste YouTube / Vimeo URL</label>
+            <input type="text" id="a-video" placeholder="e.g. https://youtube.com/watch?v=abc123" style="background:var(--bg-input);border:1px solid var(--border);border-radius:8px;padding:11px 14px;color:var(--text);font-family:'Outfit',sans-serif;font-size:0.875rem;outline:none;width:100%;margin-top:6px;"/>
+          </div>
+        </div>
+
+        <div class="admin-form-actions">
+          <button type="submit" class="btn-primary" id="publishBtn" style="padding:14px 40px;">🚀 Publish Listing</button>
+          <div class="upload-progress" id="uploadProgress" style="display:none;">
+            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+            <span id="progressText">Uploading...</span>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- MANAGE TAB -->
+    <div class="admin-tab-content" id="tab-manage">
+      <p style="color:var(--text-muted);font-size:0.82rem;margin-bottom:16px;">Toggle 🔥 Hot Deal or ⭐ Hero Card, or delete listings.</p>
+      <div id="manageListings"><div class="loading-state"><div class="spinner"></div><p>Loading...</p></div></div>
+    </div>
+
+    <!-- HERO TAB -->
+    <div class="admin-tab-content" id="tab-hero">
+      <p style="color:var(--text-muted);font-size:0.82rem;margin-bottom:16px;">Tap any property to set it as the hero card on your homepage.</p>
+      <div id="heroSelectorList"><div class="loading-state"><div class="spinner"></div><p>Loading...</p></div></div>
+    </div>
+
+    <!-- LEADS TAB -->
+    <div class="admin-tab-content" id="tab-leads">
+      <div id="leadsList"><div class="loading-state"><div class="spinner"></div><p>Loading leads...</p></div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
